@@ -8,7 +8,8 @@ export default function SendRepoInfoForm() {
 
   const updateFormData = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+
+    setFormData({ ...formData, [name]: value.trim() });
   };
 
   const { username, repoName } = formData;
