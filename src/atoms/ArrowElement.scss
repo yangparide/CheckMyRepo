@@ -1,0 +1,12 @@
+.arrow-container {
+  background-color: #edf2f6;
+  width: 1.8rem;
+  height: 2rem;
+  cursor: pointer;
+  border-radius: 15%;
+
+  &:hover {
+    background-color: rgb(139, 151, 175);
+    color: white;
+  }
+}
