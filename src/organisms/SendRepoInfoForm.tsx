@@ -76,7 +76,7 @@ export default function SendRepoInfoForm() {
           />
           <p>/Username: {username}</p>
           <p>/Repository: {repoName}</p>
-          <button type="submit">Invia!</button>
+          <Button type="submit">Invia!</Button>
         </div>
       </form>
     </div>

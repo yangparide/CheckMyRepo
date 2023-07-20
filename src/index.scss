@@ -7,4 +7,12 @@ body {
   h1 {
     margin: 0;
   }
+
+  input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: black;
+    width: 25vw;
+    font-size: 1.2rem;
+  }
 }
