@@ -3,11 +3,14 @@ import "./SendRepoInfoForm.scss";
 import Button from "../atoms/Button";
 import LabelWithArrows from "../molecules/LabelWithArrows";
 import FinalCheckLabel from "../atoms/FinalCheckLabel";
+
+const initialState = {
+  username: "",
+  repoName: "",
+};
+
 export default function SendRepoInfoForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    repoName: "",
-  });
+  const [formData, setFormData] = useState(initialState);
 
   const [phase, setPhase] = useState(0);
 
@@ -28,7 +31,7 @@ export default function SendRepoInfoForm() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, repoName }),
-    });
+    }).then(() => setPhase(4));
   };
 
   const { username, repoName } = formData;
@@ -91,6 +94,17 @@ export default function SendRepoInfoForm() {
           {blankUsername === false && blankRepoName === false && (
             <Button type="submit">Invia!</Button>
           )}
+        </div>
+        <div className={phase !== 4 ? "disabled-phase" : ""}>
+          <h2>Repository mandato!</h2>
+          <Button
+            onClick={() => {
+              setPhase(0);
+              setFormData(initialState);
+            }}
+          >
+            Home
+          </Button>
         </div>
       </form>
     </div>
