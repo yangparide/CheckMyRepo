@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from "react";
 import "./SendRepoInfoForm.scss";
 import Button from "../atoms/Button";
 import LabelWithArrows from "../molecules/LabelWithArrows";
+import FinalCheckLabel from "../atoms/FinalCheckLabel";
 export default function SendRepoInfoForm() {
   const [formData, setFormData] = useState({
     username: "",
@@ -77,12 +78,16 @@ export default function SendRepoInfoForm() {
             label="Controllo dati inseriti"
             goToPrevPage={() => setPhase(2)}
           />
-          <p className={blankUsername === true ? "blank-value" : ""}>
-            /{blankUsername === true ? "Username" : username}
-          </p>
-          <p className={blankRepoName === true ? "blank-value" : ""}>
-            /{blankRepoName === true ? "Repository" : repoName}
-          </p>
+          <FinalCheckLabel
+            isValueBlank={blankUsername}
+            placeholder="Username"
+            value={username}
+          />
+          <FinalCheckLabel
+            isValueBlank={blankRepoName}
+            placeholder="Repository"
+            value={repoName}
+          />
           {blankUsername === false && blankRepoName === false && (
             <Button type="submit">Invia!</Button>
           )}
