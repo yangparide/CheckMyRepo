@@ -1,10 +1,14 @@
 import { useState, ChangeEvent } from "react";
-import InputWithLabel from "../molecules/InputWithLabel";
+import "./SendRepoInfoForm.css";
+import Button from "../atoms/Button";
+import LabelWithArrows from "../molecules/LabelWithArrows";
 export default function SendRepoInfoForm() {
   const [formData, setFormData] = useState({
     username: "",
     repoName: "",
   });
+
+  const [phase, setPhase] = useState(0);
 
   const updateFormData = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
@@ -29,24 +33,52 @@ export default function SendRepoInfoForm() {
   const { username, repoName } = formData;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <InputWithLabel
-        label="Username"
-        name="username"
-        value={username}
-        placeholder="Scrivi lo username di GitHub"
-        onChange={updateFormData}
-      />
-      <InputWithLabel
-        label="Repository"
-        name="repoName"
-        value={repoName}
-        onChange={updateFormData}
-        placeholder="Scrivi il nome del repo di GitHub"
-      />
-      <p>/Username: {username}</p>
-      <p>/Repository: {repoName}</p>
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <div className={phase !== 0 ? "disabled-phase" : ""}>
+        <h1>Benvenuto</h1>
+        <p>
+          Nelle prossime schermate verrà chiesto di inserire username e nome
+          repository del tuo progetto GitHub
+        </p>
+        <Button onClick={() => setPhase(1)}>Procediamo!</Button>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <div className={phase !== 1 ? "disabled-phase" : ""}>
+          <LabelWithArrows
+            label="Username"
+            goToPrevPage={() => setPhase(0)}
+            goToNextPage={() => setPhase(2)}
+          />
+          <input
+            name="username"
+            value={username}
+            placeholder="Scrivi lo username di GitHub"
+            onChange={updateFormData}
+          />
+        </div>
+        <div className={phase !== 2 ? "disabled-phase" : ""}>
+          <LabelWithArrows
+            label="Username"
+            goToPrevPage={() => setPhase(1)}
+            goToNextPage={() => setPhase(3)}
+          />
+          <input
+            name="repoName"
+            value={repoName}
+            onChange={updateFormData}
+            placeholder="Scrivi il nome del repo di GitHub"
+          />
+        </div>
+        <div className={phase !== 3 ? "disabled-phase" : ""}>
+          <LabelWithArrows
+            label="Controllo dati inseriti"
+            goToPrevPage={() => setPhase(2)}
+          />
+          <p>/Username: {username}</p>
+          <p>/Repository: {repoName}</p>
+          <button type="submit">Invia!</button>
+        </div>
+      </form>
+    </>
   );
 }
