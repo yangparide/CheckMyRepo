@@ -30,7 +30,10 @@ export default function SendRepoInfoForm() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, repoName }),
+      body: JSON.stringify({
+        repoUrl: `https://github.com/${username}/${repoName}`,
+        sender: "Paride Rosati",
+      }),
     }).then(() => setPhase(4));
   };
 
