@@ -12,10 +12,24 @@ export default function SendRepoInfoForm() {
     setFormData({ ...formData, [name]: value.trim() });
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const { username, repoName } = formData;
+
+    fetch(`https://pushmore.io/webhook/Fumag4FDpBmZq9ncSpQpsBFZ`, {
+      mode: "no-cors",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, repoName }),
+    });
+  };
+
   const { username, repoName } = formData;
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <InputWithLabel
         label="Username"
         name="username"
@@ -30,6 +44,7 @@ export default function SendRepoInfoForm() {
       />
       <p>/Username: {username}</p>
       <p>/Repository: {repoName}</p>
+      <button type="submit">Submit</button>
     </form>
   );
 }
