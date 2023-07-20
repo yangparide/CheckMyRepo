@@ -32,6 +32,9 @@ export default function SendRepoInfoForm() {
 
   const { username, repoName } = formData;
 
+  const blankUsername = username === "";
+  const blankRepoName = repoName === "";
+
   return (
     <div className="main-form-container">
       <div className={phase !== 0 ? "disabled-phase" : ""}>
@@ -74,9 +77,15 @@ export default function SendRepoInfoForm() {
             label="Controllo dati inseriti"
             goToPrevPage={() => setPhase(2)}
           />
-          <p>/Username: {username}</p>
-          <p>/Repository: {repoName}</p>
-          <Button type="submit">Invia!</Button>
+          <p className={blankUsername === true ? "blank-value" : ""}>
+            /{blankUsername === true ? "Username" : username}
+          </p>
+          <p className={blankRepoName === true ? "blank-value" : ""}>
+            /{blankRepoName === true ? "Repository" : repoName}
+          </p>
+          {blankUsername === false && blankRepoName === false && (
+            <Button type="submit">Invia!</Button>
+          )}
         </div>
       </form>
     </div>
