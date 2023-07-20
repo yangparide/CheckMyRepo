@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 import ArrowElement from "../atoms/ArrowElement";
-
+import "./LabelWithArrows.scss";
 interface DefaultLabelWithArrows {
   goToPrevPage: MouseEventHandler;
   goToNextPage?: MouseEventHandler;
@@ -11,7 +11,7 @@ export default function LabelWithArrows({ ...props }: DefaultLabelWithArrows) {
   const { goToPrevPage, goToNextPage, label } = props;
 
   return (
-    <div className="label-with-arrows">
+    <div className="label-with-arrows-container">
       <ArrowElement direction="left" onClick={goToPrevPage} />
       <label>{label}</label>
       {goToNextPage && (

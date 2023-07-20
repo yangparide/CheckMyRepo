@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import "./SendRepoInfoForm.css";
+import "./SendRepoInfoForm.scss";
 import Button from "../atoms/Button";
 import LabelWithArrows from "../molecules/LabelWithArrows";
 export default function SendRepoInfoForm() {
@@ -58,7 +58,7 @@ export default function SendRepoInfoForm() {
         </div>
         <div className={phase !== 2 ? "disabled-phase" : ""}>
           <LabelWithArrows
-            label="Username"
+            label="Repository"
             goToPrevPage={() => setPhase(1)}
             goToNextPage={() => setPhase(3)}
           />

@@ -1,5 +1,5 @@
 import { ReactNode, MouseEventHandler } from "react";
-import "./Button.css";
+import "./Button.scss";
 interface DefaultButton {
   children: ReactNode;
   onClick: MouseEventHandler<HTMLButtonElement>;

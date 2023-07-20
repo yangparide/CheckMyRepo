@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import SendRepoInfoForm from "./organisms/SendRepoInfoForm";
 function App() {
   return (

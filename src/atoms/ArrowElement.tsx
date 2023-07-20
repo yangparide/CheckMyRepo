@@ -1,4 +1,5 @@
 import { MouseEventHandler } from "react";
+import "./ArrowElement.scss";
 
 interface DefaultArrowElement {
   direction: string;
@@ -7,5 +8,9 @@ interface DefaultArrowElement {
 
 export default function ArrowElement({ ...props }: DefaultArrowElement) {
   const { direction, onClick } = props;
-  return <div onClick={onClick}>{direction === "left" ? "←" : "→"}</div>;
+  return (
+    <div className="arrow-container" onClick={onClick}>
+      {direction === "left" ? "←" : "→"}
+    </div>
+  );
 }
