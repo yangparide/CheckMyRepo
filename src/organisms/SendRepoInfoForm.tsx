@@ -34,6 +34,7 @@ export default function SendRepoInfoForm() {
         label="Username"
         name="username"
         value={username}
+        placeholder="Scrivi lo username di GitHub"
         onChange={updateFormData}
       />
       <InputWithLabel
@@ -41,6 +42,7 @@ export default function SendRepoInfoForm() {
         name="repoName"
         value={repoName}
         onChange={updateFormData}
+        placeholder="Scrivi il nome del repo di GitHub"
       />
       <p>/Username: {username}</p>
       <p>/Repository: {repoName}</p>
