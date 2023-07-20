@@ -1,0 +1,25 @@
+.custom-button {
+  padding: 0.5rem;
+  border-radius: 6%;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.bg-blue {
+  background-color: #3182ce;
+}
+
+.bg-blue:hover {
+  background-color: #9ed0ff;
+  color: black;
+}
+
+.bg-orange {
+  background-color: #dc6b1f;
+}
+
+.bg-orange:hover {
+  background-color: #fedcbb;
+  color: black;
+}

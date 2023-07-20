@@ -33,14 +33,14 @@ export default function SendRepoInfoForm() {
   const { username, repoName } = formData;
 
   return (
-    <>
+    <div className="main-form-container">
       <div className={phase !== 0 ? "disabled-phase" : ""}>
         <h1>Benvenuto</h1>
         <p>
           Nelle prossime schermate verrà chiesto di inserire username e nome
           repository del tuo progetto GitHub
         </p>
-        <Button onClick={() => setPhase(1)}>Procediamo!</Button>
+        <Button onClick={() => setPhase(1)}>Procediamo! →</Button>
       </div>
       <form onSubmit={handleSubmit}>
         <div className={phase !== 1 ? "disabled-phase" : ""}>
@@ -79,6 +79,6 @@ export default function SendRepoInfoForm() {
           <button type="submit">Invia!</button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
