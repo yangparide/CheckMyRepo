@@ -1,8 +1,12 @@
+## CONFIG
+
+- create a ".env.development.local" file from the sample file
+- set "REACT_APP_REQUEST_URL" to the pushmore.io url for the POST request
+
 ## LOCAL
 
-- "REACT_APP_REQUEST_URL={{PUSHMORE_URL}} npm start"
+- run "npm run start"
 
 ## DOCKER
 
-- in Dockerfile change "RUN npm run build" to "REACT_APP_REQUEST_URL={{PUSHMORE_URL}} npm build"
-- "docker compose up"
+- run "docker compose up"
