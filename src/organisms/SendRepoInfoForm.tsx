@@ -10,6 +10,10 @@ const initialState = {
   repoName: "",
 };
 
+const requestUrl = process.env.REACT_APP_REQUEST_URL
+  ? process.env.REACT_APP_REQUEST_URL
+  : "";
+
 export function checkFormValueErrors(value: string): boolean {
   return isEmail(value);
 }
@@ -29,7 +33,7 @@ export default function SendRepoInfoForm() {
     event.preventDefault();
     const { username, repoName } = formData;
 
-    fetch(`https://pushmore.io/webhook/Fumag4FDpBmZq9ncSpQpsBFZ`, {
+    fetch(requestUrl, {
       mode: "no-cors",
       method: "POST",
       headers: {
@@ -58,7 +62,11 @@ export default function SendRepoInfoForm() {
           Nelle prossime schermate verrà chiesto di inserire username e nome
           repository del tuo progetto GitHub
         </p>
-        <Button onClick={() => setPhase(1)}>Procediamo! →</Button>
+        {requestUrl !== "" ? (
+          <Button onClick={() => setPhase(1)}>Procediamo! →</Button>
+        ) : (
+          <ErrorMessage type="missing-var" />
+        )}
       </div>
       <form onSubmit={handleSubmit}>
         <div className={phase !== 1 ? "disabled-phase" : ""}>
