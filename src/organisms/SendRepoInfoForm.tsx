@@ -106,8 +106,10 @@ export default function SendRepoInfoForm() {
             placeholder="Repository"
             value={repoName}
           />
-          {blankUsername === false && blankRepoName === false && (
+          {blankUsername === false && blankRepoName === false ? (
             <Button type="submit">Invia!</Button>
+          ) : (
+            <ErrorMessage type="final" />
           )}
         </div>
         <div className={phase !== 4 ? "disabled-phase" : ""}>
