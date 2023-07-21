@@ -8,4 +8,14 @@
   .blank-value {
     color: grey;
   }
+
+  input {
+    &.correct {
+      color: green;
+    }
+
+    &.error {
+      border-bottom: solid #c61515;
+    }
+  }
 }

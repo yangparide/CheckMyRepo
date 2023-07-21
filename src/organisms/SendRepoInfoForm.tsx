@@ -3,11 +3,16 @@ import "./SendRepoInfoForm.scss";
 import Button from "../atoms/Button";
 import LabelWithArrows from "../molecules/LabelWithArrows";
 import FinalCheckLabel from "../atoms/FinalCheckLabel";
-
+import isEmail from "validator/lib/isEmail";
+import ErrorMessage from "../atoms/ErrorMessage";
 const initialState = {
   username: "",
   repoName: "",
 };
+
+export function checkFormValueErrors(value: string): boolean {
+  return isEmail(value);
+}
 
 export default function SendRepoInfoForm() {
   const [formData, setFormData] = useState(initialState);
@@ -42,6 +47,9 @@ export default function SendRepoInfoForm() {
   const blankUsername = username === "";
   const blankRepoName = repoName === "";
 
+  const isUserNameWithErrors = checkFormValueErrors(username);
+  const isRepoNameWithErrors = checkFormValueErrors(repoName);
+
   return (
     <div className="main-form-container">
       <div className={phase !== 0 ? "disabled-phase" : ""}>
@@ -60,11 +68,13 @@ export default function SendRepoInfoForm() {
             goToNextPage={() => setPhase(2)}
           />
           <input
+            className={`${isUserNameWithErrors ? "error" : "correct"}`}
             name="username"
             value={username}
             placeholder="Scrivi lo username di GitHub"
             onChange={updateFormData}
           />
+          {isUserNameWithErrors && <ErrorMessage />}
         </div>
         <div className={phase !== 2 ? "disabled-phase" : ""}>
           <LabelWithArrows
@@ -73,11 +83,13 @@ export default function SendRepoInfoForm() {
             goToNextPage={() => setPhase(3)}
           />
           <input
+            className={`${isRepoNameWithErrors ? "error" : "correct"}`}
             name="repoName"
             value={repoName}
             onChange={updateFormData}
             placeholder="Scrivi il nome del repo di GitHub"
           />
+          {checkFormValueErrors(repoName) && <ErrorMessage />}
         </div>
         <div className={phase !== 3 ? "disabled-phase" : ""}>
           <LabelWithArrows

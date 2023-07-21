@@ -11,7 +11,7 @@ export default function LabelWithArrows({ ...props }: DefaultLabelWithArrows) {
   const { goToPrevPage, goToNextPage, label } = props;
 
   return (
-    <div className="label-with-arrows-container">
+    <div className={`label-with-arrows-container`}>
       <ArrowElement direction="left" onClick={goToPrevPage} />
       <label>{label}</label>
       {goToNextPage && (
