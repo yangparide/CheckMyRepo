@@ -20,7 +20,7 @@ export default function ErrorMessage({ type }: DefaultErrorMessage) {
             <b>Attenzione!</b> Non è presente la variabile d'ambiente necessaria
             per il funzionamento dell'App!
             <br />
-            Leggere file README.md per avere maggiori informazioni!
+            Leggere file README.md per maggiori informazioni!
           </p>
         );
       default:
