@@ -2,8 +2,8 @@ version: "3.8"
 
 services:
   app:
-    container_name: docker-react-container-CMR
-    image: docker-react-image-CMR
+    container_name: docker-react-container-cmr
+    image: docker-react-image-cmr
     build:
       context: .
     ports:
