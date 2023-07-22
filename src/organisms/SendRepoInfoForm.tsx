@@ -13,10 +13,10 @@ const initialState = {
 const requestUrl = process.env.REACT_APP_REQUEST_URL
   ? process.env.REACT_APP_REQUEST_URL
   : "";
+
 export function checkFormValueErrors(value: string): boolean {
   return isEmail(value);
 }
-
 export default function SendRepoInfoForm() {
   const [formData, setFormData] = useState(initialState);
 
