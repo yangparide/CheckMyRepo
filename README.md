@@ -12,6 +12,10 @@
 
 - run "docker compose up"
 
+## TEST
+
+- run "npm run test"
+
 ## INFO
 
 - node version: v20.2.0
