@@ -114,7 +114,9 @@ export default function SendRepoInfoForm() {
             value={repoName}
           />
           {blankUsername === false && blankRepoName === false ? (
-            <Button type="submit">Invia!</Button>
+            <Button type="submit" bgColor={"orange"}>
+              Invia!
+            </Button>
           ) : (
             <ErrorMessage type="final" />
           )}
