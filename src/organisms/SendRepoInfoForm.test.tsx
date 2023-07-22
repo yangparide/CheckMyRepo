@@ -8,5 +8,5 @@ test("render SendRepoInfoForm start button", () => {
 });
 
 test("check if email value is not accepted", () => {
-  expect(checkFormValueErrors("test@test.com")).not.toBe(false);
+  expect(checkFormValueErrors("test@test.com")).toBe(true);
 });
