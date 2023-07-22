@@ -11,3 +11,7 @@
 ## DOCKER
 
 - run "docker compose up"
+
+## INFO
+
+- node version: v20.2.0
